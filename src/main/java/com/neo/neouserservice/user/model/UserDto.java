@@ -10,6 +10,6 @@ public class UserDto {
     //    UUID
     private String id;
 
-    private String name;
+    private String firstName;
 
 }

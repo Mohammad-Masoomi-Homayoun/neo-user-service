@@ -13,7 +13,7 @@ public class UserMapper {
             return null;
 
         User user = new User();
-        user.setName(userDto.getName());
+        user.setFirstName(userDto.getFirstName());
 
         return user;
     }
@@ -25,7 +25,7 @@ public class UserMapper {
 
         UserDto userDto = new UserDto();
         userDto.setId(user.getId());
-        userDto.setName(user.getName());
+        userDto.setFirstName(user.getFirstName());
 
         return userDto;
     }
