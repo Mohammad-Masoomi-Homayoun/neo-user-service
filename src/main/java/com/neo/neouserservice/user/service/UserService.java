@@ -1,5 +1,6 @@
 package com.neo.neouserservice.user.service;
 
+import com.neo.neouserservice.common.model.ID;
 import com.neo.neouserservice.user.model.User;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import java.util.Map;
 public class UserService {
 
 
-    public static Map<String, User> users = new HashMap<>();
+    public static Map<ID, User> users = new HashMap<>();
 
 
     public User register(User user) {

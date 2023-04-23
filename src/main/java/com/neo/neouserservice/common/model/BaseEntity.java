@@ -1,41 +1,47 @@
 package com.neo.neouserservice.common.model;
 
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 @MappedSuperclass
-public class BaseEntity {
+public abstract class BaseEntity implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @EmbeddedId
+    private ID id;
+
     @CreatedBy
-    private Long creatorUser;
-    @CreatedDate
-    private LocalDateTime creationDate;
+    @AttributeOverride(name = "id", column = @Column(name = "created_by_id", updatable = false))
+    private ID creator;
+
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
+
     @LastModifiedBy
-    private Long modifierUser;
+    @AttributeOverride(name = "id", column = @Column(name = "modified_by_id", updatable = false))
+    private ID modifier;
+
     @LastModifiedDate
-    private LocalDateTime modificationDate;
+    private LocalDateTime modifiedAt;
+
     private boolean deleted = false;
+
     private boolean active = true;
+
+    @PrePersist
+    public void generateIdAndDate() {
+        if(this.getId() == null) {
+            this.setId(ID.generateId());
+            this.setCreatedAt(LocalDateTime.now());
+        }
+    }
 
 }

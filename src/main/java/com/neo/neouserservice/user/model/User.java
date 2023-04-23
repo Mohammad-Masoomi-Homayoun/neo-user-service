@@ -1,6 +1,7 @@
 package com.neo.neouserservice.user.model;
 
 import com.neo.neouserservice.common.GenderEnum;
+import com.neo.neouserservice.common.model.BaseEntity;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -9,10 +10,9 @@ import java.util.UUID;
 import jakarta.persistence.*;
 
 @Data
-public class User implements Serializable {
+@Entity
+public class User extends BaseEntity implements Serializable {
 
-    @Id
-    private String id = UUID.randomUUID().toString();
     private String firstName;
     private String lastName;
     private Date birthDate;
