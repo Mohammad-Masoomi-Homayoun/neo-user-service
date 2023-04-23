@@ -1,0 +1,7 @@
+version: "2"
+services:
+  neo-user-service:
+    container_name: neo-user-service
+    build: .
+    ports:
+      - "9082:9082"
