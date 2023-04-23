@@ -24,6 +24,9 @@ The neo-user-service provides the following REST endpoints:
 - [ ] add swagger docs 
 - [ ] add login endpoint
 - [ ] add register endpoint
+- [ ] add Mapstruct
+- [ ] add Redis and cacheable
+
 
  
 ### Contributing 
