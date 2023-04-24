@@ -21,11 +21,13 @@ The neo-user-service provides the following REST endpoints:
 
 ### Todo
 
-- [ ] add swagger docs 
+- [ ] add swagger docs (OpenApi Specification 3)
 - [ ] add login endpoint
 - [ ] add register endpoint
 - [ ] add Mapstruct
 - [ ] add Redis and cacheable
+- [ ] add message bundle and handling locale
+- [ ] add spring actuator
 
 
  
