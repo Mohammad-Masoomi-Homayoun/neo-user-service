@@ -41,6 +41,20 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.10.6</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.google.cloud.tools/jib-maven-plugin -->
         <!--        <dependency>-->
         <!--            <groupId>com.google.cloud.tools</groupId>-->
@@ -66,26 +80,26 @@
                 </configuration>
             </plugin>
 
-<!--            <plugin>-->
-<!--                <groupId>com.google.cloud.tools</groupId>-->
-<!--                <artifactId>jib-maven-plugin</artifactId>-->
-<!--                <version>3.2.0</version>-->
-<!--                <configuration>-->
+            <!--            <plugin>-->
+            <!--                <groupId>com.google.cloud.tools</groupId>-->
+            <!--                <artifactId>jib-maven-plugin</artifactId>-->
+            <!--                <version>3.2.0</version>-->
+            <!--                <configuration>-->
 
-<!--                    <to>-->
-<!--                        <image>${project.name}:${project.version}</image>-->
-<!--                        <tags>-->
-<!--                            <tag>${project.version}</tag>-->
-<!--                            <tag>latest</tag>-->
-<!--                        </tags>-->
-<!--                    </to>-->
-<!--                    <container>-->
-<!--                        <ports>-->
-<!--                            <port>9082</port>-->
-<!--                        </ports>-->
-<!--                    </container>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
+            <!--                    <to>-->
+            <!--                        <image>${project.name}:${project.version}</image>-->
+            <!--                        <tags>-->
+            <!--                            <tag>${project.version}</tag>-->
+            <!--                            <tag>latest</tag>-->
+            <!--                        </tags>-->
+            <!--                    </to>-->
+            <!--                    <container>-->
+            <!--                        <ports>-->
+            <!--                            <port>9082</port>-->
+            <!--                        </ports>-->
+            <!--                    </container>-->
+            <!--                </configuration>-->
+            <!--            </plugin>-->
 
         </plugins>
     </build>
