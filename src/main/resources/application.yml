@@ -13,3 +13,13 @@ spring:
   properties:
     hibernate:
       dialect: org.hibernate.dialect.H2Dialect
+
+jwt:
+  token:
+    expire:
+      day:
+        due: 8
+  secret: imhub
+security:
+  encryption:
+    key: imhub_encryption_symetric_key

@@ -1,4 +1,4 @@
-package com.neo.neouserservice.common;
+package com.neo.neouserservice.common.enums;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.neo.neouserservice.common.execption.VerificationException;

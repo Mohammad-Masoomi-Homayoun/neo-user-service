@@ -2,6 +2,7 @@ package com.neo.neouserservice.user.service;
 
 import com.neo.neouserservice.common.model.ID;
 import com.neo.neouserservice.user.model.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -33,4 +34,6 @@ public class UserService {
 
         return user;
     }
+
+
 }

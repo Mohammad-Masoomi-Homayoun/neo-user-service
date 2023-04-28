@@ -1,12 +1,12 @@
 package com.neo.neouserservice.user.model;
 
-import com.neo.neouserservice.common.GenderEnum;
+import com.neo.neouserservice.common.enums.GenderEnum;
 import com.neo.neouserservice.common.model.BaseEntity;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.UUID;
+
 import jakarta.persistence.*;
 
 @Data
