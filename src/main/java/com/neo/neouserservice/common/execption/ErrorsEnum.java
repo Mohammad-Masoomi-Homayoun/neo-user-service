@@ -2,41 +2,41 @@ package com.neo.neouserservice.common.execption;
 
 public enum ErrorsEnum {
 
-    badRequest(40001, 400, "Bad Request!"),
+    BAD_REQUEST(40001, 400, "Bad Request!"),
 
-    duplicateUsername(42201, 422, "Duplicate Entity!"),
+    DUPLICATE_USERNAME(42201, 422, "Duplicate Entity!"),
 
-    resourceNotFound(41301, 413, "Resource Not Found!"),
+    RESOURCE_NOT_FOUND(41301, 413, "Resource Not Found!"),
 
-    notVerified(41302, 413, "Resource Not Found!"),
+    NOT_VERIFIED(41302, 413, "Resource Not Found!"),
 
-    userNotActivated(40302, 403, "Account Not Activated!"),
+    USER_NOT_ACTIVATED(40302, 403, "Account Not Activated!"),
 
-    userNotFound(41303, 413, "User Not Found!"),
+    USER_NOT_FOUND(41303, 413, "User Not Found!"),
 
-    loginFailed(40103, 401, "User Not Found!"),
+    LOGIN_FAILED(40103, 401, "User Not Found!"),
 
-    samePasswordOnReset(40303, 403, "Your password is same as previous!"),
+    SAME_PASSWORD_ON_RESET(40303, 403, "Your password is same as previous!"),
 
-    accessDenied(40304, 403, "You have not permission to action this page"),
+    ACCESS_DENIED(40304, 403, "You have not permission to action this page"),
 
-    insertAllFields(40601, 406, "Your password is same as previous"),
+    INSERT_ALL_FIELDS(40601, 406, "Your password is same as previous"),
 
-    paymentMethodNotSupported(40602, 406, "Payment hasn't been accepted!"),
+    PAYMENT_METHOD_NOT_SUPPORTED(40602, 406, "Payment hasn't been accepted!"),
 
-    serverError(50001, 500, "Sorry! There is a problem in server side!"),
+    SERVER_ERROR(50001, 500, "Sorry! There is a problem in server side!"),
 
-    smsError(50002, 500, "There is problem with sending verification sms"),
+    SMS_ERROR(50002, 500, "There is problem with sending verification sms"),
 
-    notSavedFile(50003, 500, "Sorry! There is a problem in saving file!"),
+    NOT_SAVED_FILE(50003, 500, "Sorry! There is a problem in saving file!"),
 
-    operationFailedException(50004, 500, "Operation is not completed!"),
+    OPERATION_FAILED_EXCEPTION(50004, 500, "Operation is not completed!"),
 
-    permissionError(40303, 403, "You Have Not Enough Permission!"),
+    PERMISSION_ERROR(40303, 403, "You Have Not Enough Permission!"),
 
-    conversionError(41501, 415, "Unsupported media type!"),
+    CONVERSION_ERROR(41501, 415, "Unsupported media type!"),
 
-    invalidInputException(40601, 406, "Input Invalid!");
+    INVALID_INPUT_EXCEPTION(40601, 406, "Input Invalid!");
 
 
     private String message;
