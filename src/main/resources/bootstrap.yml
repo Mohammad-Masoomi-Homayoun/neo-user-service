@@ -1,0 +1,26 @@
+server:
+  port: 9082
+---
+spring:
+  profiles:
+    active: dev
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/neo_service?autoReconnect=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8&jdbcCompliantTruncation=false
+    jpa:
+      hibernate:
+        ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+jwt:
+  token:
+    expire:
+      day:
+        due: 8
+  secret: neo
+security:
+  encryption:
+    key: neo-encryption_symetric_key
