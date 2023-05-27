@@ -1,9 +1,9 @@
 package com.neo.neouserservice.common.security.token;
 
-
 import com.neo.neouserservice.user.model.User;
 import com.neo.neouserservice.user.service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,6 +28,7 @@ public class EmailPasswordAuthenticationProvider implements AuthenticationProvid
     }
 
     @Autowired
+    @Lazy
     public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
@@ -36,10 +37,10 @@ public class EmailPasswordAuthenticationProvider implements AuthenticationProvid
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
         Optional<User> user = userRepository.findUserByEmail(authentication.getName());
-        if(!user.isPresent())
+        if (user.isEmpty())
             throw new BadCredentialsException("User not found");
 
-        if(!passwordEncoder.matches(authentication.getPrincipal().toString(), user.get().getPassword()))
+        if (!passwordEncoder.matches(authentication.getPrincipal().toString(), user.get().getPassword()))
             throw new BadCredentialsException("Password is incorrect");
 
         return new UsernamePasswordAuthenticationToken(user, authentication.getCredentials(), Collections.emptyList());
