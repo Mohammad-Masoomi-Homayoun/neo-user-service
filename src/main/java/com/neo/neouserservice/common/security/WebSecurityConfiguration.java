@@ -34,6 +34,7 @@ public class WebSecurityConfiguration {
                 .csrf().disable()
                 .cors().disable()
                 .authorizeHttpRequests()
+                .requestMatchers("/v3/**", "/swagger-ui/**").permitAll()
                 .requestMatchers("/user/register", "/login").permitAll()
                 .anyRequest().authenticated()
                 .and().authenticationManager(authenticationManagerBuilder.build());
