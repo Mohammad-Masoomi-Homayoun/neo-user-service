@@ -2,8 +2,6 @@ package com.neo.neouserservice.common.security.token;
 
 import com.neo.neouserservice.user.model.User;
 import com.neo.neouserservice.user.service.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,16 +18,10 @@ public class EmailPasswordAuthenticationProvider implements AuthenticationProvid
 
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    private PasswordEncoder passwordEncoder;
-
-    public EmailPasswordAuthenticationProvider(UserRepository userRepository) {
+    public EmailPasswordAuthenticationProvider(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-    }
-
-    @Autowired
-    @Lazy
-    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
 
