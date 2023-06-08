@@ -37,7 +37,6 @@ public class User extends BaseEntity implements UserDetails, Serializable {
     private String country;
     private String address;
 
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.EMPTY_LIST;
@@ -71,5 +70,11 @@ public class User extends BaseEntity implements UserDetails, Serializable {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public static User of(String username) {
+        User user = new User();
+        user.setEmail(username);
+        return user;
     }
 }

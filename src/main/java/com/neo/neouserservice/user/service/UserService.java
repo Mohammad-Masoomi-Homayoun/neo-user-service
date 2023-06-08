@@ -87,4 +87,8 @@ public class UserService {
     }
 
 
+    public User getMyInfo() {
+
+        return null;
+    }
 }

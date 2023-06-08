@@ -32,7 +32,7 @@ public class EmailPasswordAuthenticationProvider implements AuthenticationProvid
         if (user.isEmpty())
             throw new BadCredentialsException("User not found");
 
-        if (!passwordEncoder.matches(authentication.getPrincipal().toString(), user.get().getPassword()))
+        if (!passwordEncoder.matches(authentication.getCredentials().toString(), user.get().getPassword()))
             throw new BadCredentialsException("Password is incorrect");
 
         return new UsernamePasswordAuthenticationToken(user, authentication.getCredentials(), Collections.emptyList());

@@ -26,15 +26,21 @@ public class UserController {
         return service.register(mapper.toDomain(userDto));
     }
 
-    @PostMapping("login")
-    public UserDto login(@RequestBody UserDto userDto) {
-
-        return mapper.toDto(service.login(mapper.toDomain(userDto)));
-    }
+//    @PostMapping("login")
+//    public UserDto login(@RequestBody UserDto userDto) {
+//
+//        return mapper.toDto(service.login(mapper.toDomain(userDto)));
+//    }
 
     @GetMapping("{id}")
     public UserDto getUser(@PathVariable("id") String id) {
 
         return mapper.toDto(service.getUser(ID.of(id)));
+    }
+
+    @GetMapping("/me")
+    public UserDto getMyInfo() {
+
+        return mapper.toDto(service.getMyInfo());
     }
 }
