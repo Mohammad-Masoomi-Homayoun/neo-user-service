@@ -24,17 +24,23 @@ public class WebSecurityConfiguration {
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        httpSecurity
-                .csrf().disable();
-//                .cors().disable()
-//                .authorizeHttpRequests()
-//                .requestMatchers("/v3/**", "/swagger-ui/**").permitAll()
-//                .requestMatchers("/user/register/**", "/login/**").permitAll()
-//                .anyRequest().authenticated();
+        http
+            .csrf().disable()
+            .cors().disable()
+            .formLogin().disable()
+            .httpBasic().disable();
+//            .authorizeHttpRequests()
+//            .requestMatchers(
+//                    "/v3/**",
+//                    "/swagger-ui/**",
+//                    "/api/users/register/**",
+//                    "/login")
+//                .permitAll()
+//            .anyRequest().authenticated();
 
-        return httpSecurity.build();
+        return http.build();
     }
 
     @Bean

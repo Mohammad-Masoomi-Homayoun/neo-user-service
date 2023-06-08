@@ -2,7 +2,8 @@ package com.neo.neouserservice.user.controller;
 
 
 import com.neo.neouserservice.common.model.ID;
-import com.neo.neouserservice.user.model.UserDto;
+import com.neo.neouserservice.user.dto.UserDto;
+import com.neo.neouserservice.user.dto.UserEntryResponseDto;
 import com.neo.neouserservice.user.service.UserMapper;
 import com.neo.neouserservice.user.service.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +21,9 @@ public class UserController {
     }
 
     @PostMapping("register")
-    public UserDto register(@RequestBody UserDto userDto) {
+    public UserEntryResponseDto register(@RequestBody UserDto userDto) {
 
-        return mapper.toDto(service.register(mapper.toDomain(userDto)));
+        return service.register(mapper.toDomain(userDto));
     }
 
     @PostMapping("login")

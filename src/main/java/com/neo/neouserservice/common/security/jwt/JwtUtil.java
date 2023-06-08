@@ -25,9 +25,14 @@ public class JwtUtil {
     @Value("${token.key:password}")
     private String tokenKey;
 
+    public LocalDateTime expiration() {
+
+        return LocalDateTime.now().plus(expireTime, ChronoUnit.SECONDS);
+    }
+
     public String generateAccessToken(UserDetails user) {
 
-        LocalDateTime expireAt = LocalDateTime.now().plus(expireTime, ChronoUnit.SECONDS);
+        LocalDateTime expireAt = expiration();
 
         List<String> claims = user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
 

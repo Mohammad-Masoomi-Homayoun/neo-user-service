@@ -1,12 +1,15 @@
-package com.neo.neouserservice.user.model;
+package com.neo.neouserservice.user.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.neo.neouserservice.common.enums.GenderEnum;
 import com.neo.neouserservice.common.model.ID;
 import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
+
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDto  implements Serializable{
 
     private ID id;
@@ -19,6 +22,7 @@ public class UserDto  implements Serializable{
     private String profileImage;
     private String mobile;
     private String email;
+    private String password;
     private String zipCode;
     private String city;
     private String country;

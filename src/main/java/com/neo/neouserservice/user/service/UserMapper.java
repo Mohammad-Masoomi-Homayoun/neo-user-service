@@ -1,7 +1,7 @@
 package com.neo.neouserservice.user.service;
 
 import com.neo.neouserservice.user.model.User;
-import com.neo.neouserservice.user.model.UserDto;
+import com.neo.neouserservice.user.dto.UserDto;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
