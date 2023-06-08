@@ -12,17 +12,15 @@ import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import java.io.IOException;
-import java.time.ZoneOffset;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private ObjectMapper objectMapper = new ObjectMapper();
+
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
 

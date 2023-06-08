@@ -47,8 +47,6 @@ public class JwtUtil {
 
     public String generateAccessRefreshToken(User user) {
 
-        LocalDateTime expireAt = LocalDateTime.now().plus(expireTime, ChronoUnit.SECONDS);
-
         List<String> claims = user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
 
         return JWT.create()
