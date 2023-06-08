@@ -19,23 +19,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Table(name = "neo_user")
 public class User extends BaseEntity implements UserDetails, Serializable {
 
-    private String firstName;
-    private String lastName;
-    private Date birthDate;
+    private String name;
     @Enumerated(EnumType.STRING)
     private GenderEnum gender;
-    @Column(length = 512)
-    private String bio;
-    private String passportCode;
-    private String profileImage;
-    private String mobile;
     @Column(unique=true)
     private String email;
     private String password;
-    private String zipCode;
-    private String city;
-    private String country;
-    private String address;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

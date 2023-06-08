@@ -11,11 +11,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
-import java.util.Optional;
 
 @Component
 public class EmailPasswordAuthenticationProvider implements AuthenticationProvider {
-
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;

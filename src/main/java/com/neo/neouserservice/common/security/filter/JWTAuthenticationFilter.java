@@ -27,6 +27,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     private final JwtUtil jwtUtil;
 
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JwtUtil jwtTokenUtil2) {
+        super.setFilterProcessesUrl("/api/users/login");
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtTokenUtil2;
     }
