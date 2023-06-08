@@ -28,13 +28,13 @@ public class SwaggerConfig {
         public static final String VERSION = "0.0.1-SNAPSHOT";
 
         private static final String CONTACT_NAME = "Mohammad-Masoomi-Homayoun";
-        private static final String CONTACT_EMAIL = "";
+        private static final String CONTACT_EMAIL = "en.masoomi@gmail.com";
         private static final String CONTACT_URL = "";
 
         public static final Contact CONTACT = new Contact().name(CONTACT_NAME).email(CONTACT_EMAIL).url(CONTACT_URL);
 
-        private static final String LICENSE_NAME = "License 2023";
-        private static final String LICENSE_URL = "License Url";
+        private static final String LICENSE_NAME = "MIT";
+        private static final String LICENSE_URL = "https://opensource.org/license/mit/";
 
         public static final License LICENSE = new License().name(LICENSE_NAME).url(LICENSE_URL);
     }

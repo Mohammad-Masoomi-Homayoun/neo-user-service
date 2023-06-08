@@ -1,6 +1,7 @@
 package com.neo.neouserservice.user.controller;
 
 
+import com.neo.neouserservice.common.model.ID;
 import com.neo.neouserservice.user.model.UserDto;
 import com.neo.neouserservice.user.service.UserMapper;
 import com.neo.neouserservice.user.service.UserService;
@@ -33,6 +34,6 @@ public class UserController {
     @GetMapping("{id}")
     public UserDto getUser(@PathVariable("id") String id) {
 
-        return mapper.toDto(service.getUser(id));
+        return mapper.toDto(service.getUser(ID.of(id)));
     }
 }

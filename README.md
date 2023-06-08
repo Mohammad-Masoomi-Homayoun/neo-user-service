@@ -6,10 +6,13 @@ The neo-user-service is a RESTful web service that provides user management func
   - Java 17
   - Maven
 ### Installation
-Clone the repository:
-```git clone https://github.com/Mohammad-Masoomi-Homayoun/neo-user-service.git```
-Change into the project directory: ```cd neo-user-service```
-Build the project using Maven: ```mvn clean install```
+Clone the repository and build the project:
+
+```
+git clone https://github.com/Mohammad-Masoomi-Homayoun/neo-user-service.git
+cd neo-user-service
+mvn clean install
+```
 
 ### Usage
 To start the application, run the following command from the project directory:
@@ -21,10 +24,10 @@ The neo-user-service provides the following REST endpoints:
 
 ### Todo
 
-- [ ] add swagger docs (OpenApi Specification 3)
-- [ ] add login endpoint
-- [ ] add register endpoint
-- [ ] add Mapstruct
+- [X] add swagger docs (OpenApi Specification 3)
+- [X] add login endpoint
+- [X] add register endpoint
+- [X] add Mapstruct
 - [ ] add Redis and cacheable
 - [ ] add message bundle and handling locale
 - [ ] add spring actuator

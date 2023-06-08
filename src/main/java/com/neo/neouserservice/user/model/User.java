@@ -15,11 +15,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Data
 @Entity
+@Table(name = "neo_user")
 public class User extends BaseEntity implements UserDetails, Serializable {
 
     private String firstName;
     private String lastName;
     private Date birthDate;
+    @Enumerated(EnumType.STRING)
     private GenderEnum gender;
     @Column(length = 512)
     private String bio;
@@ -28,6 +30,7 @@ public class User extends BaseEntity implements UserDetails, Serializable {
     private String mobile;
     @Column(unique=true)
     private String email;
+    private String password;
     private String zipCode;
     private String city;
     private String country;
@@ -41,7 +44,7 @@ public class User extends BaseEntity implements UserDetails, Serializable {
 
     @Override
     public String getPassword() {
-        return this.getPassword();
+        return this.password;
     }
 
     @Override

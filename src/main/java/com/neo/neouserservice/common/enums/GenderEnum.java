@@ -12,7 +12,8 @@ public enum GenderEnum {
 
     NOT_SET("Not Set", 0),
     MALE("Male", 1),
-    FEMALE("Female", 2);
+    FEMALE("Female", 2),
+    OTHER("Other", 3);
 
     private String label;
     private int value;

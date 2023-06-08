@@ -22,4 +22,8 @@ public class ID implements Serializable {
     public ID() {
 
     }
+
+    public static ID of(String id) {
+        return new ID(id);
+    }
 }

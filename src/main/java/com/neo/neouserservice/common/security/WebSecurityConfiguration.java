@@ -27,12 +27,12 @@ public class WebSecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
 
         httpSecurity
-                .csrf().disable()
-                .cors().disable()
-                .authorizeHttpRequests()
-                .requestMatchers("/v3/**", "/swagger-ui/**").permitAll()
-                .requestMatchers("/user/register", "/login").permitAll()
-                .anyRequest().authenticated();
+                .csrf().disable();
+//                .cors().disable()
+//                .authorizeHttpRequests()
+//                .requestMatchers("/v3/**", "/swagger-ui/**").permitAll()
+//                .requestMatchers("/user/register/**", "/login/**").permitAll()
+//                .anyRequest().authenticated();
 
         return httpSecurity.build();
     }
