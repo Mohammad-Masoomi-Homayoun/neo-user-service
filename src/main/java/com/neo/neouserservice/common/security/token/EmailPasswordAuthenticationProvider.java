@@ -28,11 +28,11 @@ public class EmailPasswordAuthenticationProvider implements AuthenticationProvid
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
-        Optional<User> user = userRepository.findUserByEmail(authentication.getName());
-        if (user.isEmpty())
+        User user = userRepository.findUserByEmail(authentication.getName());
+        if (user == null)
             throw new BadCredentialsException("User not found");
 
-        if (!passwordEncoder.matches(authentication.getCredentials().toString(), user.get().getPassword()))
+        if (!passwordEncoder.matches(authentication.getCredentials().toString(), user.getPassword()))
             throw new BadCredentialsException("Password is incorrect");
 
         return new UsernamePasswordAuthenticationToken(user, authentication.getCredentials(), Collections.emptyList());

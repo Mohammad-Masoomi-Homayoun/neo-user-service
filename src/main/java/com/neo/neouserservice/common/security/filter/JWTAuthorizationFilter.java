@@ -45,7 +45,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     public UsernamePasswordAuthenticationToken extractUserToke(String token) {
 
         DecodedJWT decodedJWT = jwtUtil.decode(token);
-        if(!Arrays.asList(decodedJWT.getClaim("scopes")).contains("auth_scope")) {
+        if(!Arrays.asList(decodedJWT.getClaim("scopes").asString()).contains("auth_scope")) {
             return null;
         }
 

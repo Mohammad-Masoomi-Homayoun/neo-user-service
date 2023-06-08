@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UserDto  implements Serializable{
+public class UserDto implements Serializable{
 
     private ID id;
     private String firstName;
@@ -30,5 +30,9 @@ public class UserDto  implements Serializable{
     private String city;
     private String country;
     private String address;
+
+    public String getId() {
+        return this.id.toString();
+    }
 
 }

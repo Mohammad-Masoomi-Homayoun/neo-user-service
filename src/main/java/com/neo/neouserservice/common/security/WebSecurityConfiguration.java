@@ -2,6 +2,7 @@ package com.neo.neouserservice.common.security;
 
 import com.neo.neouserservice.common.execption.FilterChainExceptionHandler;
 import com.neo.neouserservice.common.security.filter.JWTAuthenticationFilter;
+import com.neo.neouserservice.common.security.filter.JWTAuthorizationFilter;
 import com.neo.neouserservice.common.security.jwt.JwtUtil;
 import com.neo.neouserservice.common.security.token.EmailPasswordAuthenticationProvider;
 import org.springframework.context.ApplicationContext;
@@ -52,7 +53,8 @@ public class WebSecurityConfiguration {
             .anyRequest().authenticated()
             .and()
             .addFilterBefore(filterChainExceptionHandler, LogoutFilter.class)
-            .addFilter(new JWTAuthenticationFilter(getAuthenticationManager(), jwtUtil));
+            .addFilter(new JWTAuthenticationFilter(getAuthenticationManager(), jwtUtil))
+            .addFilter(new JWTAuthorizationFilter(getAuthenticationManager(), jwtUtil));
 
         return http.build();
     }

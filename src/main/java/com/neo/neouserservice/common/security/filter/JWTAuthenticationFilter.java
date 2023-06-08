@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.neo.neouserservice.common.security.jwt.JwtUtil;
 import com.neo.neouserservice.common.security.token.EmailPasswordAuthenticationToken;
 import com.neo.neouserservice.user.model.User;
-import com.neo.neouserservice.user.service.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -16,11 +15,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import java.io.IOException;
-import java.time.ZoneId;
 import java.time.ZoneOffset;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -49,9 +47,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     public void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException {
         Map<String, Object> body = new HashMap<>();
-        body.put("token", jwtUtil.generateAccessToken(User.of(authentication.getPrincipal().toString())));
-        body.put("refreshToken", jwtUtil.generateAccessRefreshToken(User.of(authentication.getPrincipal().toString())));
-        body.put("expiration", jwtUtil.expiration().toEpochSecond(ZoneOffset.UTC));
+        body.put("token", jwtUtil.generateAccessToken((User) authentication.getPrincipal()));
+        body.put("refreshToken", jwtUtil.generateAccessRefreshToken((User) authentication.getPrincipal()));
+        body.put("expiration", jwtUtil.expiration().getEpochSecond());
         response.setStatus(HttpStatus.OK.value());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         objectMapper.writeValue(response.getWriter(), body);
