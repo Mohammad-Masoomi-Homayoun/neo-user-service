@@ -1,11 +1,11 @@
-package com.neo.neouserservice.user.controller;
+package com.neo.neouserservice.user.web.controller;
 
 
 import com.neo.neouserservice.common.model.ID;
-import com.neo.neouserservice.user.dto.UserDto;
-import com.neo.neouserservice.user.dto.UserEntryResponseDto;
-import com.neo.neouserservice.user.service.UserMapper;
-import com.neo.neouserservice.user.service.UserService;
+import com.neo.neouserservice.user.web.dto.UserDto;
+import com.neo.neouserservice.user.web.dto.UserEntryResponseDto;
+import com.neo.neouserservice.user.domain.mapper.UserMapper;
+import com.neo.neouserservice.user.domain.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -25,12 +25,6 @@ public class UserController {
 
         return service.register(mapper.toDomain(userDto));
     }
-
-//    @PostMapping("login")
-//    public UserDto login(@RequestBody UserDto userDto) {
-//
-//        return mapper.toDto(service.login(mapper.toDomain(userDto)));
-//    }
 
     @GetMapping("{id}")
     public UserDto getUser(@PathVariable("id") String id) {

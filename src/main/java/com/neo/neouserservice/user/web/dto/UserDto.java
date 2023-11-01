@@ -1,4 +1,4 @@
-package com.neo.neouserservice.user.dto;
+package com.neo.neouserservice.user.web.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.neo.neouserservice.common.enums.GenderEnum;

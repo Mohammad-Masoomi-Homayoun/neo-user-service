@@ -3,10 +3,9 @@ package com.neo.neouserservice.common.security.jwt;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.neo.neouserservice.user.model.User;
+import com.neo.neouserservice.user.domain.model.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
@@ -34,7 +33,10 @@ public class JwtUtil {
 
     public String generateAccessToken(User user) {
 
-        List<String> claims = user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
+        List<String> claims = user.getAuthorities()
+                .stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList());
 
         return JWT.create()
                 .withIssuedAt(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()))
@@ -47,7 +49,10 @@ public class JwtUtil {
 
     public String generateAccessRefreshToken(User user) {
 
-        List<String> claims = user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
+        List<String> claims = user.getAuthorities()
+                .stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList());
 
         return JWT.create()
                 .withIssuedAt(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()))
@@ -58,6 +63,8 @@ public class JwtUtil {
     }
 
     public DecodedJWT decode(String token) {
-        return JWT.require(Algorithm.HMAC512(tokenKey)).build().verify(token);
+        return JWT.require(Algorithm.HMAC512(tokenKey))
+                .build()
+                .verify(token);
     }
 }

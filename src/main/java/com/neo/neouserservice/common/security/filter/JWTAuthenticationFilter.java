@@ -3,7 +3,7 @@ package com.neo.neouserservice.common.security.filter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.neo.neouserservice.common.security.jwt.JwtUtil;
 import com.neo.neouserservice.common.security.token.EmailPasswordAuthenticationToken;
-import com.neo.neouserservice.user.model.User;
+import com.neo.neouserservice.user.domain.model.User;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

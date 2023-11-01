@@ -1,4 +1,4 @@
-package com.neo.neouserservice.user.dto;
+package com.neo.neouserservice.user.web.dto;
 
 import lombok.Builder;
 import lombok.Data;

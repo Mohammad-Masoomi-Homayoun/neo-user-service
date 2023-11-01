@@ -1,7 +1,7 @@
-package com.neo.neouserservice.user.service;
+package com.neo.neouserservice.user.domain.mapper;
 
-import com.neo.neouserservice.user.model.User;
-import com.neo.neouserservice.user.dto.UserDto;
+import com.neo.neouserservice.user.domain.model.User;
+import com.neo.neouserservice.user.web.dto.UserDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

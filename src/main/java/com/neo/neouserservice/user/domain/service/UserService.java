@@ -1,15 +1,17 @@
-package com.neo.neouserservice.user.service;
+package com.neo.neouserservice.user.domain.service;
 
 import com.neo.neouserservice.common.model.ID;
 import com.neo.neouserservice.common.security.jwt.JwtUtil;
-import com.neo.neouserservice.user.dto.UserEntryResponseDto;
-import com.neo.neouserservice.user.model.User;
-import com.neo.neouserservice.user.service.repository.UserRepository;
+import com.neo.neouserservice.user.domain.model.User;
+import com.neo.neouserservice.user.persistance.repository.UserRepository;
+import com.neo.neouserservice.user.web.dto.UserEntryResponseDto;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -41,30 +43,23 @@ public class UserService {
     }
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        if (username == null)
-            return null;
 
-        User userDetails = userRepository.findUserByEmail(username);
-
-        if (userDetails == null)
-            return null;
-
-        return (UserDetails) userDetails;
+        return Optional.ofNullable(username)
+                .map(u -> userRepository.findUserByEmail(u))
+                .orElse(null);
     }
 
     public User getUser(ID id) {
-
-        User user = userRepository.findById(id).get();
-
-        if (user == null)
-            throw new RuntimeException("User not found");
-
-        return user;
+        return Optional.ofNullable(id)
+                .map(uid -> userRepository.findById(id))
+                .orElseThrow(() -> new IllegalArgumentException("id is required"));
     }
 
-
     public User getMyInfo() {
-        String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        String username = SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal().toString();
         User user = userRepository.findUserByEmail(username);
         user.setPassword(null);
         return user;

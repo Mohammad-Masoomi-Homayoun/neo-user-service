@@ -1,4 +1,4 @@
-package com.neo.neouserservice.user.model;
+package com.neo.neouserservice.user.domain.model;
 
 import com.neo.neouserservice.common.enums.GenderEnum;
 import com.neo.neouserservice.common.model.BaseEntity;
@@ -7,16 +7,12 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
-import java.util.List;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Data
-@Entity
-@Table(name = "neo_user")
 public class User extends BaseEntity implements UserDetails, Serializable {
 
     private String name;
@@ -28,7 +24,7 @@ public class User extends BaseEntity implements UserDetails, Serializable {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.EMPTY_LIST;
+        return Collections.emptyList();
     }
 
     @Override

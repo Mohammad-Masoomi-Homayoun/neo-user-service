@@ -1,7 +1,7 @@
 package com.neo.neouserservice.common.security.token;
 
-import com.neo.neouserservice.user.model.User;
-import com.neo.neouserservice.user.service.repository.UserRepository;
+import com.neo.neouserservice.user.domain.model.User;
+import com.neo.neouserservice.user.persistance.repository.UserRepository;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
