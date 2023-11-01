@@ -18,6 +18,7 @@ public class UserJpa extends BaseEntity {
     private String name;
     @Enumerated(EnumType.STRING)
     private GenderEnum gender;
+    // validation
     @Column(unique=true)
     private String email;
     private String password;

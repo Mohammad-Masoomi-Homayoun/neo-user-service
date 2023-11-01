@@ -22,7 +22,6 @@ public class UserController {
 
     @PostMapping("register")
     public UserEntryResponseDto register(@RequestBody UserDto userDto) {
-
         return service.register(mapper.toDomain(userDto));
     }
 
@@ -32,9 +31,19 @@ public class UserController {
         return mapper.toDto(service.getUser(ID.of(id)));
     }
 
-    @GetMapping("/me")
+    @GetMapping("me")
     public UserDto getMyInfo() {
 
         return mapper.toDto(service.getMyInfo());
+    }
+
+    @GetMapping("{id}/info")
+    public UserDto getUserInfo(@PathVariable("id") String id, @RequestParam(value = "infoType", required = false) String infoType) {
+
+        // validate infoType
+        if(infoType != null && InfoType.fromString(infoType) == null) {
+            throw new IllegalArgumentException("infoType is invalid");
+        }
+        return mapper.toDto(service.getUser(ID.of(id)));
     }
 }
