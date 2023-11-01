@@ -2,18 +2,16 @@ package com.neo.neouserservice.user.domain.model;
 
 import com.neo.neouserservice.common.enums.GenderEnum;
 import com.neo.neouserservice.common.model.BaseEntity;
-import com.neo.neouserservice.user.persistance.repository.UserRepository;
-import jakarta.annotation.Resource;
+import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
-
-import jakarta.persistence.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 @Data
 public class User extends BaseEntity implements UserDetails, Serializable, UserValidation {
