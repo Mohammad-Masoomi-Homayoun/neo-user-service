@@ -7,7 +7,6 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
-import lombok.NonNull;
 
 import java.io.Serializable;
 
@@ -23,9 +22,5 @@ public class UserDto implements Serializable{
     @NotEmpty
     private String email;
     private String password;
-
-    public String getId() {
-        return this.id.toString();
-    }
 
 }

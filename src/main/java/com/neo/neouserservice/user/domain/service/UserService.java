@@ -7,8 +7,6 @@ import com.neo.neouserservice.user.persistance.repository.UserRepository;
 import com.neo.neouserservice.user.web.client.UserWebClient;
 import com.neo.neouserservice.user.web.dto.UserEntryResponseDto;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -31,15 +29,14 @@ public class UserService {
 
     public UserEntryResponseDto register(User user) {
 
+        // validate by domain
+        user.isValid();
+
         // validation: web user exists
         User webUser = userWebClient.getUser("http://localhost:8080/api/users/{id}", user.getId());
-        if(webUser != null) {
+        if (webUser != null) {
             throw new IllegalArgumentException("id has already been taken");
         }
-
-        // validation: local user exists
-        if (userRepository.existsByEmail(user.getEmail()))
-            throw new IllegalArgumentException("email has already been taken");
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user = userRepository.save(user);
@@ -50,13 +47,6 @@ public class UserService {
                 .build();
     }
 
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-        return Optional.ofNullable(username)
-                .map(u -> userRepository.findUserByEmail(u))
-                .orElse(null);
-    }
-
     public User getUser(ID id) {
         return Optional.ofNullable(id)
                 .map(uid -> userRepository.findById(id))
@@ -64,8 +54,7 @@ public class UserService {
     }
 
     public User getMyInfo() {
-        String username = SecurityContextHolder
-                .getContext()
+        String username = SecurityContextHolder.getContext()
                 .getAuthentication()
                 .getPrincipal().toString();
         User user = userRepository.findUserByEmail(username);

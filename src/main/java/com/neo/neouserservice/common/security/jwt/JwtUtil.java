@@ -28,7 +28,7 @@ public class JwtUtil {
 
     public Instant expiration() {
 
-        return LocalDateTime.now().plus(expireTime, ChronoUnit.SECONDS).toInstant(ZoneOffset.UTC);
+        return LocalDateTime.now().plusSeconds(expireTime).toInstant(ZoneOffset.UTC);
     }
 
     public String generateAccessToken(User user) {

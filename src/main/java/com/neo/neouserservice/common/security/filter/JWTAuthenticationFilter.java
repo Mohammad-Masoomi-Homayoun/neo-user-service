@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
@@ -34,13 +34,12 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
 
         try {
-            Map<?, ?> creds = objectMapper.readValue(request.getInputStream(), Map.class);
-            Authentication authentication = new EmailPasswordAuthenticationToken(creds.get("email"), creds.get("password"));
+            Map<?, ?> credentials = objectMapper.readValue(request.getInputStream(), Map.class);
+            Authentication authentication = new EmailPasswordAuthenticationToken(credentials.get("email"), credentials.get("password"));
             return authenticationManager.authenticate(authentication);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new BadCredentialsException(String.format("Authentication failed by %s", e.getMessage()), e);
         }
-        throw new BadCredentialsException("Authentication failed");
     }
 
     @Override
